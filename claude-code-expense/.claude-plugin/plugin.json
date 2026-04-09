@@ -1,0 +1,9 @@
+{
+  "name": "claude-code-expense",
+  "version": "0.1.0",
+  "description": "Fills out a Concur expense report from a Claude Code receipt PDF saved to the Reimbursement folder. Stops before Submit for manual approval.",
+  "author": {
+    "name": "Wen Yang",
+    "email": "wyang@outsideinc.com"
+  }
+}

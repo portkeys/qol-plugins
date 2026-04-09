@@ -1,0 +1,14 @@
+{
+  "name": "qol-plugins",
+  "owner": {
+    "name": "Wen Yang",
+    "email": "wyang@outsideinc.com"
+  },
+  "plugins": [
+    {
+      "name": "claude-code-expense",
+      "source": "./claude-code-expense",
+      "description": "Fills out a Concur expense report from a Claude Code receipt PDF saved to the Reimbursement folder. Stops before Submit for manual approval."
+    }
+  ]
+}
