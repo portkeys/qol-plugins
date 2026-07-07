@@ -71,9 +71,9 @@ Otherwise, before renaming, check whether a file with the canonical name already
 
 Record the full path to the PDF for use in Step 8. It must be an absolute path.
 
-## Step 4 — Open Concur via Playwright MCP
+## Step 4 — Open Concur via the plugin's Playwright MCP
 
-Use the Playwright MCP (`mcp__playwright__*` tools) to drive a Chrome browser. The plugin configures Playwright with a persistent user data directory at:
+Use this plugin's bundled Playwright server — the `mcp__plugin_claude-code-expense_concur-chrome__*` tools, NOT the generic `mcp__playwright__*` server. Only the plugin's server drives real Chrome with the persistent user data directory that holds the Concur login session:
 
 ```
 ~/Library/Application Support/claude-code-playwright-profile

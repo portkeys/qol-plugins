@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "playwright": {
+    "concur-chrome": {
       "command": "npx",
       "args": [
         "-y",
