@@ -1,6 +1,6 @@
 {
   "name": "claude-code-expense",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Fills out a Concur expense report from a Claude Code receipt PDF saved to the Reimbursement folder. Stops before Submit for manual approval.",
   "author": {
     "name": "Wen Yang",

@@ -4,7 +4,7 @@ description: Read the most recent Claude Code receipt PDF from the Reimbursement
 
 # Submit Claude Code Expense
 
-You are filling out a Concur expense report for the user's monthly Claude Code subscription. The user has already saved the receipt PDF to a folder on disk — your job is to read it, extract two values, drive Concur in a browser to fill out the form, attach the PDF, and then STOP without submitting.
+You are filling out a Concur expense report for the user's monthly Claude Code subscription. The user has already saved the receipt PDF to a folder on disk — your job is to read it, extract three values, drive Concur in a browser to fill out the form, attach the PDF, and then STOP without submitting.
 
 You do NOT have Gmail access. You do NOT need Gmail access. The PDF is already on disk.
 
@@ -39,14 +39,15 @@ Pick the **most recently modified unprocessed PDF**. That's the one to process.
 
 ## Step 2 — Extract data from the PDF
 
-Use the `pdf` skill to extract these two fields from the selected PDF:
+Use the `pdf` skill to extract these three fields from the selected PDF:
 
 - **Amount** — the total charged (e.g. `$20.00` → `20.00`, as a plain number without the dollar sign)
 - **Service Start Date** — the start of the billing/service period shown on the receipt, formatted as `MM/DD/YYYY`
+- **Service End Date** — the end of the same billing/service period, formatted as `MM/DD/YYYY` (e.g. the line item `Jul 4–Aug 4, 2026` → start `07/04/2026`, end `08/04/2026`)
 
 The **Transaction Date** for Concur is the SAME value as Service Start Date. Don't extract it separately.
 
-If you cannot confidently find both values in the PDF, STOP and report exactly what you see in the PDF to the user. Do not proceed to Concur with guessed values.
+If you cannot confidently find all three values in the PDF, STOP and report exactly what you see in the PDF to the user. Do not proceed to Concur with guessed values.
 
 Also compute:
 
@@ -121,6 +122,7 @@ On the "New Expense" form, fill these fields:
 | Project ID | Leave blank |
 | Service Schedule | `Service (prepaid)` |
 | Service Start Date | Same as Transaction Date (from the PDF) |
+| Service End Date | Service End Date from the PDF — the end of the billing period (MM/DD/YYYY) |
 
 **If any of the auto-populated defaults (Category / Brand / Department) are missing, empty, or different from the defaults listed above, STOP and ask the user what to set them to.** Do not guess. (The defaults above are for the Labs team; users on other Outside teams will have different values and should tell you what to use.)
 
@@ -145,7 +147,7 @@ After attaching, click **Save Expense** to save the line item. **Saving the line
 Summarize what you did in a short message:
 
 - Which PDF you processed (filename, and whether you renamed it)
-- Amount and Service Start Date extracted from the PDF
+- Amount, Service Start Date, and Service End Date extracted from the PDF
 - The full path to the saved PDF
 - The Concur report name and report number (if visible on the page)
 - A clear reminder: "Please review in Concur and click **Submit Report** when ready."
